@@ -1,8 +1,8 @@
 from flask import Flask
 
 app = Flask(__name__)
-PORT = 8080
-DEBUG = True
+PORT = 5000
+DEBUG = False
 
 @app.errorhandler(404)
 def not_found(error):
