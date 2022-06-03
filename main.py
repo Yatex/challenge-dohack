@@ -1,4 +1,5 @@
 from flask import Flask
+from minesweeper import resolver
 
 app = Flask(__name__)
 PORT = 5000
@@ -10,7 +11,7 @@ def not_found(error):
 
 @app.route('/', methods=['GET'])
 def index():
-    return "Hola Gente"
+    return resolver()
 
 if __name__ == '__main__':
     app.run(port = PORT, debug = DEBUG)
