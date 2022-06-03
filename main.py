@@ -1,7 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
-PORT = 8000
+PORT = 8080
 DEBUG = True
 
 @app.errorhandler(404)
