@@ -1,5 +1,5 @@
-from xml.etree.ElementTree import tostring
 from apicalls import minesweeper
+import json
 
 def check_bomb(isit):
     if(isit == '*'):
@@ -8,18 +8,18 @@ def check_bomb(isit):
         return 0 
 
 def resolver():
-    map = minesweeper()
-    solution = map
+    problem = json.loads(minesweeper().content)
+    solution = problem
 
     rows = 0
-    columns = 0
 
     for line in solution:
         columns = 0
         for block in line:
-            if(block != '|' and block != '-' and block != '+' and block != '*'):
+            if(block == ' '):
                 solution[rows][columns] = str(check_bomb(solution[rows-1][columns-1]) + check_bomb(solution[rows-1][columns]) + check_bomb(solution[rows-1][columns+1]) + check_bomb(solution[rows][columns-1]) + check_bomb(solution[rows][columns+1]) + check_bomb(solution[rows+1][columns-1]) + check_bomb(solution[rows+1][columns]) + check_bomb(solution[rows+1][columns+1]))
             columns += 1
         rows += 1
     
-    return map, solution
+    package = {'problem': problem, 'solution': solution}
+    return package
