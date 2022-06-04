@@ -9,9 +9,13 @@ app = flask.Flask(__name__)
 def not_found(error):
     return "Not Found"
 
-@app.route('/', methods=['GET'])
-def index():
+@app.route('/minesweeper', methods=['GET'])
+def minesweeper():
     return resolver()
+
+@app.route('/')
+def index():
+    return "For the challenge solution pls go to /minesweeper"
 
 if __name__ == "__main__":
     app.secret_key = 'ItIsASecret'
