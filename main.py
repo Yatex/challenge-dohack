@@ -5,16 +5,11 @@ from minesweeper import resolver
 
 app = flask.Flask(__name__)
 
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/favicon.png')
-
 @app.errorhandler(404)
 def not_found(error):
     return "Not Found"
 
-@app.route('/minesweeper', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
     return resolver()
 
