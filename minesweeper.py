@@ -1,4 +1,5 @@
 from apicalls import minesweeper
+import numpy as np
 import json
 
 def check_bomb(isit):
@@ -8,8 +9,8 @@ def check_bomb(isit):
         return 0 
 
 def resolver():
-    problem = json.loads(minesweeper().content)
-    solution = problem
+    problem = np.array(json.loads(minesweeper().content))
+    solution = problem.copy()
 
     rows = 0
 
@@ -21,5 +22,5 @@ def resolver():
             columns += 1
         rows += 1
     
-    package = {'problem': problem, 'solution': solution}
+    package = {'problem': problem.tolist(), 'solution': solution.tolist()}
     return package
